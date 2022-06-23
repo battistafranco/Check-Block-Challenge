@@ -6,7 +6,7 @@ I choose the Angular Framework because I got everything in one place with a simp
 
 ## Getting started
 
-1 - You need to have NodeJS and NPM installed. Can be dowloaded from: [Node](https://nodejs.org/en/).
+1 - You need to have NodeJS and NPM installed. Can be dowloaded from: [Node](https://nodejs.org/en/). And Angular CLI should be installed too. [Angular CLI](https://github.com/angular/angular-cli)
 
 2 - When installation Completes, clone the repo.
 
