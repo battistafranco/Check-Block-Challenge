@@ -17,31 +17,11 @@ describe('AppComponent', () => {
     'MKYcOvNTyVlhAjXJwkPfEgSyL4ao9CyWmZV4DNZ8Nay0Dng2jdUv0Kh7kgiUi8olrKh9g5JekIDWZv7RXNqCUaWAJSSBk68rWcBG',
   ];
 
-  let fakeOrderedBlocks = [
-    'NccpYPDNQEfxkCIcGgZyD0YzjSDlhdUZvAfSxkVsPGN8aSNHT5BljrFY7aHgKfviYgeX3KhMzAGlh3BOwLPTlYS0MyiLmAI1W8la',
-    'G4aamYzyI3nrUZUyjbuxEvV51q8QAbvvFwZVDjg6t1KkHmRYsg8xFuUCLrmycWcmFijymHj1dW2vdEBSMeSPgnpuPOVKiOiBG6Qp',
-    'tVJCqTloVrjuqlZqqNqj1xZspxCHOMrt38bLJcELsjhnvWThi5GxOazbYvfpzHHgQxFmtwqecfxuMgvWjgO4OOKwJyeQUjslstCS',
-    '8PwOVP8wkaHW6EuxlLghzNcMfWJpsKomPfr2QEEsIVkZj2SaZEzFYfuL34dHPEdj4nuqUH7A7AeN8ZHOOq8MPh9Zw20EwC1jh8X3',
-    'rvyVSfdaHiIjk7Drk2265eHCYCAkYlRtDtQ1aprQuVoMEYcdHiYvLIsFzeyifJSq3VE5TSCP6znGdrif0hi3sVtjoqIvfz11JiYE',
-    'yqHMXjVSpEvI1Z1SuDtJOGBQqGR4iTq6ihihQiMvXSm7vsgvDN946rPI6QGGLgwZ3anh2HPgI4oLTKSnjftFuchi4BGTe4brkExU',
-    'MKYcOvNTyVlhAjXJwkPfEgSyL4ao9CyWmZV4DNZ8Nay0Dng2jdUv0Kh7kgiUi8olrKh9g5JekIDWZv7RXNqCUaWAJSSBk68rWcBG',
-    'yHY5bIIrRu5xxkYsBUXU9T4ZJ6oz4SMryZeMvTBiwvozJKlfhwK5CpFRiTnslnWjSPWapjUwQLp6dIJdDo4JuCGzxPU01YXbXRkK',
-    'EApJQgT6ivJKSRwTeELHYWMJEHC0O8NktFeuRLiyIAdd1yxzAlrnjNlun9CYt5wHRNCngeMvFQIKs7WapaFyjzzDS3zLvxnioAeE',
-  ];
-
-  let fakeWrongResponse = {
-    message: false,
-  };
-
   let fakeOkResponse = {
     message: true,
   };
 
   let fakeToken = 'a41c1747-9613-4ab8-b5cf-5bf8b37ed73b';
-
-  let fakePayload = {
-    blocks: fakeBlocks,
-  };
 
   beforeEach(async () => {
     mockBlocksService = jasmine.createSpyObj([
@@ -51,23 +31,10 @@ describe('AppComponent', () => {
       'buildPayload',
     ]);
     mockBlocksService.getToken.and.returnValue(of(fakeToken));
-    mockBlocksService.getBlock.and.returnValue(of(fakeOrderedBlocks));
     mockBlocksService.postCheck.and.returnValue(of(fakeOkResponse));
-    mockBlocksService.buildPayload.and.returnValue(of(fakePayload));
     await TestBed.configureTestingModule({
       declarations: [AppComponent],
       providers: [{ provide: BlocksService, useValue: mockBlocksService }],
-
-      // providers: [
-      //   {
-      //     provide: BlocksService,
-      //     useValue: {
-      //       getToken: () => of(fakeToken),
-      //       getBlock: () => of(fakeBlocks),
-      //       check: () => of(fakeOkResponse),
-      //     },
-      //   },
-      // ],
     }).compileComponents();
   });
 
